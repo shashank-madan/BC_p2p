@@ -105,7 +105,7 @@ contract('Lending', async ([owner, alice, bob]) => {
       );
 
       await contractInstance.sendETHtoContract({from:alice, value:200000});
-      const repay = await contractInstance.repayLoan(
+      const repay = await contractInstance.repayAmount(
         0,
         {from: alice,
         value: 200000}

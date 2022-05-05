@@ -134,25 +134,25 @@ contract Lending {
         // require(success, "Transfer failed.");
     }
 
-    // function repayAmount(uint256 _loanId) public view returns (uint256) {
-    //     if (loans[_loanId].state == LoanState.ACCEPTED) {
-    //         uint256 startTime = loans[_loanId].time;
-    //         uint256 finalAmount = 0;
-    //         uint256 principalValue = loans[_loanId].loanAmount;
-    //         uint256 paymentTime = block.timestamp;
-    //         uint256 interestRate = loans[_loanId].interestRate;
-    //         uint256 loanTime = paymentTime - startTime;
+    function repayAmount(uint256 _loanId) public view returns (uint256) {
+        if (loans[_loanId].state == LoanState.ACCEPTED) {
+            uint256 startTime = loans[_loanId].time;
+            uint256 finalAmount = 0;
+            uint256 principalValue = loans[_loanId].loanAmount;
+            uint256 paymentTime = block.timestamp;
+            uint256 interestRate = loans[_loanId].interestRate;
+            uint256 loanTime = paymentTime - startTime;
 
-    //         uint256 interest = (
-    //             principalValue.mul(interestRate).mul(loanTime)
-    //         ) / (365 * 24 * 60 * 60 * 100);
+            uint256 interest = (
+                principalValue.mul(interestRate).mul(loanTime)
+            ) / (365 * 24 * 60 * 60 * 100);
 
-    //         finalAmount.add(interest);
-    //         finalAmount.add(principalValue);
+            finalAmount.add(interest);
+            finalAmount.add(principalValue);
 
-    //         return finalAmount;
-    //     }
-    // }
+            return finalAmount;
+        }
+    }
 
     function loanPaid(uint256 _loanId) public {
         potential_lenders[_loanId].state = LoanState.REPAID;
