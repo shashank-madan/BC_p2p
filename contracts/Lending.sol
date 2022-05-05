@@ -93,8 +93,7 @@ contract Lending {
     }
 
     function sendETHtoContract() public payable {
-        //msg.value is the amount of wei that the msg.sender sent with this transaction.
-        //If the transaction doesn't fail, then the contract now has this ETH.
+
     }
 
     function getAllPotentialLenders() public view returns (Loan[] memory) {
