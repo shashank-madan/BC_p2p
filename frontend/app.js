@@ -22,7 +22,8 @@ App = {
       App.web3Provider = web3.currentProvider
       web3 = new Web3(web3.currentProvider)
     } else {
-      window.alert('Please connect to Metamask.')
+      // set the provider you want from Web3.providers
+      web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"))
     }
     // Modern dapp browsers...
     if (window.ethereum) {
